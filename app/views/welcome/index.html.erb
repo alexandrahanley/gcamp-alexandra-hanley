@@ -53,10 +53,8 @@
         </div>
       </div>
 
-
-    <ul>
         <% @quotes.each do |quote| %>
-          <p> <%= quote[0]%> </p>
+          <p> "<%= quote[0]%>" </p>
           <p class ="text-muted"><em> – <%= quote[1]%></p>
+
         <% end %>
-      </ul>

@@ -3,7 +3,7 @@
 <head>
   <title>GcampAlexandraHanley</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -11,7 +11,7 @@
 
 
     <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
+      <!-- <div class="container"> -->
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
             <span class="sr-only">Toggle navigation</span>
@@ -23,7 +23,7 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
 
-        </div><!--/.navbar-collapse -->
+        </div>
       </div>
     </nav>
 
@@ -42,6 +42,7 @@
             <%= link_to "Tasks", tasks_path %>
           </div>
 
+
           <div class="col-md-6 text-right">
             <a href="https://www.linkedin.com">
               <%= image_tag("linkedin.jpg", class: "img-footer") %>
@@ -56,6 +57,9 @@
               <%= image_tag("gschool.jpg", class: "img-footer") %>
             </a> </div>
           </div>
+        </div>
+
+
         </footer>
 
 
