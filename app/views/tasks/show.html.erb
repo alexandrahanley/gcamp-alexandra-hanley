@@ -1,19 +1,21 @@
-<div class="container">
 
 <% if notice %>
 
-  <div class= "alert alert-success"><%= notice %>
-</div>
-
+  <div class= "alert alert-success"><%= notice %></div>
 <% end %>
 
-<div class="pull-right">
- <%= link_to 'Edit', edit_task_path, class: "btn btn-info" %></div>
+<div class="page-header">
 
-<p>
-  <!-- <strong>Description:</strong> -->
-  <h1><%= @task.description %></h1>
-</p>
+  <div class="pull-right">
+    <%= link_to 'Edit', edit_task_path, class: "btn btn-info" %></div>
+
+  <h1><%= @task.description %>
+
+</div>
+
+
+
+
 
 <ol class="breadcrumb">
   <li><a href="/tasks">Tasks</a></li>
