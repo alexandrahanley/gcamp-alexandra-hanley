@@ -1,11 +1,26 @@
 <div class="container">
 
-    <p id="notice"><%= notice %></p>
+<% if notice %>
+
+  <div class= "alert alert-success"><%= notice %>
+</div>
+
+<% end %>
+
+<div class="pull-right">
+ <%= link_to 'Edit', edit_task_path, class: "btn btn-info" %></div>
 
 <p>
-  <strong>Description:</strong>
-  <%= @task.description %>
+  <!-- <strong>Description:</strong> -->
+  <h1><%= @task.description %></h1>
 </p>
 
-<%= link_to 'Edit', edit_task_path(@task) %> |
-<%= link_to 'Back', tasks_path %>
+<ol class="breadcrumb">
+  <li><a href="/tasks">Tasks</a></li>
+  <li class="active">New Task</li>
+</ol>
+
+
+
+<!-- <%= link_to 'Edit', edit_task_path(@task) %> |
+<%= link_to 'Back', tasks_path %> -->
