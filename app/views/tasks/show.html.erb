@@ -22,7 +22,8 @@
   <li class="active">New Task</li>
 </ol>
 
-<p><strong> Due on: </strong><%= @task.date %></p>
+<p><strong> Due on: </strong><%= @task.date.to_s.gsub("-", "/") %></p>
+
 
 
 <!-- <%= link_to 'Edit', edit_task_path(@task) %> |
