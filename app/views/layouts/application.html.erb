@@ -2,7 +2,8 @@
 <html>
 
 <head>
-  <title>GcampAlexandraHanley</title>
+  <title>gCamp</title>
+  <%= favicon_link_tag 'favicon.ico' %>
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
@@ -10,30 +11,22 @@
 <body>
 
 
-
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="/">gCamp</a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-
-        </div>
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="/">gCamp</a>
       </div>
-    </nav>
-<div class= "container">
-    <%= yield %>
-<hr>
+  </nav>
 
-  <footer>
+
+  <div class= "container">
+
+      <%= yield %>
+
+      <hr>
+
+      <footer>
         <div class="row">
-
           <div class="col-md-6">
             <%= link_to "About", about_path %>
             |
@@ -58,31 +51,20 @@
             <a href="https://students.gschool.it/">
               <%= image_tag("gschool.jpg", class: "img-footer") %>
             </a>
-            </div>
-
           </div>
+        </div>
+      </footer>
+  </div>
 
 
-
-        </footer>
-
-
-      </div>
-
-
-
-
-
-        <!-- Bootstrap core JavaScript
-        ================================================== -->
-        <!-- Placed at the end of the document so the pages load faster -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-        <script src="../../dist/js/bootstrap.min.js"></script>
-        <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-        <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="../../dist/js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
 
 
-
-
-</body>
+  </body>
 </html>
