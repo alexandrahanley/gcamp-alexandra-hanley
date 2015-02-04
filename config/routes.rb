@@ -10,6 +10,7 @@ Rails.application.routes.draw do
    get 'about' => 'about#index'
    get 'terms' => 'terms#index'
    get 'tasks' => 'tasks#index'
+   resources :users
 
 
   # Example of regular route:
