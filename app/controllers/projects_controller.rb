@@ -9,12 +9,22 @@ class ProjectsController < ApplicationController
   end
 
   def edit
+    @project = Project.find(params[:id])
+  end
+
+  def update
+    @project = Project.find(params[:id])
+    if @project.update(project_params)
+      redirect_to @project, notice: 'Project was successfully updated.'
+    else
+      render :edit
+    end
   end
 
   def create
     @project = Project.new(project_params)
     if @project.save
-      redirect_to projects_path, notice: 'User was successfully created.'
+      redirect_to @project, notice: 'Project was successfully created.'
     else
       render :new
     end
@@ -25,6 +35,9 @@ class ProjectsController < ApplicationController
   end
 
   def destroy
+    @project = Project.find(params[:id])
+    @project.destroy
+    redirect_to @project, notice: 'Project was successfully deleted.'
   end
 
   private
