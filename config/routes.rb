@@ -11,6 +11,7 @@ Rails.application.routes.draw do
    get 'terms' => 'terms#index'
    get 'tasks' => 'tasks#index'
    resources :users
+   resources :projects
 
 
   # Example of regular route:
