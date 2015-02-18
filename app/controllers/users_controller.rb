@@ -41,7 +41,7 @@ class UsersController < ApplicationController
   def destroy
     @user = User.find(params[:id])
       @user.destroy
-       redirect_to @user, notice: 'Task was successfully deleted.'
+       redirect_to @user, notice: 'User was successfully deleted.'
   end
 
   private
