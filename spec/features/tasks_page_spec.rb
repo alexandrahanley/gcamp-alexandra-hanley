@@ -6,7 +6,7 @@ describe 'User can CRUD tasks' do
     visit '/'
     click_on "Tasks"
     click_on "New Task"
-    fill_in 'task[description]', :with => "Party"
+    fill_in 'task[description]', with: "Party"
     click_on "Create Task"
     expect(page).to have_content("Party")
     expect(page).to have_content("Task was successfully created.")
