@@ -8,16 +8,17 @@ describe 'User can CRUD users' do
     click_on "New User"
     fill_in 'user[first_name]', with: "Alexandra"
     fill_in 'user[last_name]', with: "Hanley"
-    fill_in 'user[email]', with: "alexandrahanley@mail.com"
+    fill_in 'user[email]', with: "z@z.com"
+    fill_in 'user[password]', with: "z"
+    fill_in 'user[password_confirmation]', with: "z"
     click_on "Create User"
-    expect(page).to have_content("alexandrahanley@mail.com")
+    expect(page).to have_content("z@z.com")
     expect(page).to have_content("User was successfully created.")
   end
 
 
   scenario 'User can view a show page for a user' do
-
-    @user = User.create(first_name: "Alexandra", last_name: "Hanley", email: "alexandrahanley@mail.com")
+    @user = User.create(first_name: "Alexandra", last_name: "Hanley", email: "alexandrahanley@mail.com", password: "z", password_confirmation: "z")
     visit "/users/#{@user.id}"
     expect(page).to have_content("Alexandra")
   end
@@ -25,7 +26,7 @@ describe 'User can CRUD users' do
 
 
   scenario 'User can edit a user' do
-    @user = User.create(first_name: "Alexandra", last_name: "Hanley", email: "ah@gmail.com")
+    @user = User.create(first_name: "Alexandra", last_name: "Hanley", email: "alexandrahanley@mail.com", password: "z", password_confirmation: "z")
     visit "/users/#{@user.id}"
     click_on "Edit"
     fill_in 'user[first_name]', with: "Alejandra"
@@ -36,7 +37,7 @@ describe 'User can CRUD users' do
 
 
   scenario 'User can delete a user' do
-    @user = User.create(first_name: "Alexandra", last_name: "Hanley", email: "ah@gmail.com")
+    @user = User.create(first_name: "Alexandra", last_name: "Hanley", email: "alexandrahanley@mail.com", password: "z", password_confirmation: "z")
     visit "/users/#{@user.id}"
     expect(page).to have_content("Alexandra")
     click_on "Edit"
