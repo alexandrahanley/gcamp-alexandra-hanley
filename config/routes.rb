@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
-  resources :tasks
+  resources :users
 
+resources :projects do
+    resources :tasks
+end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -9,16 +12,14 @@ Rails.application.routes.draw do
    get 'faq' => 'common_questions#index'
    get 'about' => 'about#index'
    get 'terms' => 'terms#index'
-   get 'tasks' => 'tasks#index'
 
    get '/signup' => 'registrations#new'
    post '/signup' => 'registrations#create'
    get '/signin' => 'authentication#new'
    post '/signin' => 'authentication#create'
    get '/signout' => 'authentication#destroy'
-   
-   resources :users
-   resources :projects
+
+
 
 
   # Example of regular route:
