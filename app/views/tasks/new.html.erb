@@ -4,8 +4,8 @@
 
 <ol class="breadcrumb">
   <li><%= link_to "Tasks", project_tasks_path(@project) %></li>
-  <li class="active"><%= @task.description %></li>
+  <li><%= @project.name %></li>
+  <li class="active">New Task</li>
 </ol>
-
 
 <%= render 'form' %>
