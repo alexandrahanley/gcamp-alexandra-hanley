@@ -7,13 +7,18 @@
 <% end %>
 
 <ol class="breadcrumb">
-  <li><%= link_to "Projects", project_path %></li>
+  <li><%= link_to "Projects", projects_path %></li>
   <li><%= link_to @project.name, project_path(@project) %></li>
   <li class="active">Memberships</li>
 </ol>
 
   <div class= "well form-inline">
+
     <%= form_for [@project, @membership], html: {class: "form-horizontal"} do |f| %>
+    <% if flash.now[:alert] %>
+    <% end %>
+
+    <%= render partial: 'shared/error', locals: { object: @membership } %>
     <%= f.collection_select :user_id, User.all, :id, :full_name, {include_blank: "Please select a user"},
         {class:"form-control"} %>
     <%= f.select(:role, Membership.roles.keys.map {|role| [role.titleize,role]},
