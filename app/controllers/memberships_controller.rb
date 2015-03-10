@@ -32,7 +32,8 @@ class MembershipsController < ApplicationController
     @membership = Membership.find(params[:id])
     @membership.project_id = @project.id
     @membership.destroy
-      redirect_to project_memberships_path(@project), notice: 'Membership was destroyed.'
+      redirect_to project_memberships_path(@project), notice:
+      "#{@membership.user.full_name}#{" was successfully removed"}."
   end
 
  private
