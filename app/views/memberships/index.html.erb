@@ -32,7 +32,7 @@
     <% @project.memberships.each do |membership| %>
       <%= form_for [@project, membership], html: {class: "form-horizontal"} do |f| %>
     <div class= "form-group">
-      <%= membership.user.full_name %>
+      <%= link_to membership.user.full_name, user_path(membership.user) %>
     </div>
     <div class= "form-group">
     <%= f.select(:role, Membership.roles.keys.map {|role| [role.titleize,role]},
