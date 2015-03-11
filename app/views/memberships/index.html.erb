@@ -12,26 +12,30 @@
   <li class="active">Memberships</li>
 </ol>
 
-  <div class= "well form-inline">
+<%= form_for [@project, @membership] do |f| %>
+<% if flash.now[:alert] %>
+<% end %>
 
-    <%= form_for [@project, @membership], html: {class: "form-horizontal"} do |f| %>
-    <% if flash.now[:alert] %>
-    <% end %>
+<%= render partial: 'shared/error', locals: { object: @membership } %>
 
-    <%= render partial: 'shared/error', locals: { object: @membership } %>
-    <%= f.collection_select :user_id, User.all, :id, :full_name, {include_blank: "Please select a user"},
-        {class:"form-control"} %>
+<div class= "well form-inline">
+    <div class= "form-group">
+      <%= f.collection_select :user_id, User.all, :id, :full_name, {include_blank: "Please select a user"},
+          {class:"form-control"} %>
+    </div>
+    <div class= "form-group">
     <%= f.select(:role, Membership.roles.keys.map {|role| [role.titleize,role]},
-        {include_blank: false},{class:"form-control"})%>
+            {include_blank: false},{class:"form-control"})%>
+    </div>
     <%= f.submit class: "btn btn-primary" %>
     <% end %>
   </div>
 
-  <table>
-    <div class= "form-inline">
+
+  <div class= "form-inline">
     <% @project.memberships.each do |membership| %>
-      <%= form_for [@project, membership], html: {class: "form-horizontal"} do |f| %>
-    <div class= "form-group">
+      <%= form_for [@project, membership] do |f| %>
+    <div class= "form-group col-md-2">
       <%= link_to membership.user.full_name, user_path(membership.user) %>
     </div>
     <div class= "form-group">
