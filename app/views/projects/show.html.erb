@@ -17,3 +17,11 @@
 
 <p><%= link_to "#{@project.tasks.count}#{" Tasks"}", project_tasks_path(@project) %></p>
 <p><%= link_to "#{@project.memberships.count}#{" Members"}", project_memberships_path(@project) %></p>
+
+
+<div class="well">
+  <h4>Delete</h4>
+  <p><%= "Deleting this project will also delete #{@project.memberships.count}
+        #{" memberships, "} #{@project.tasks.count}#{" tasks"} and associated comments."%></p>
+  <%= link_to 'Delete', @project, class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %>
+</div>
