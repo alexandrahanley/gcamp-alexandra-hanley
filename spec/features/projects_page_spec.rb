@@ -65,7 +65,7 @@ describe 'User can CRUD projects' do
     fill_in 'project[name]', with: "Project2"
     click_on "Create Project"
     expect(page).to have_content("Project2")
-    click_on("Delete")
+    click_on "Delete"
     expect(page).to have_content("Project was successfully deleted.")
   end
 

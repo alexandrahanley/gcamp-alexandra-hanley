@@ -29,12 +29,12 @@
     <tbody>
       <% @tasks.each do |task| %>
       <tr>
-        <td><%= link_to task.description, project_task_path(@project, task) %></td>
+        <td><%= link_to task.description, project_task_path(@project, task), id: "task-desc" %></td>
         <td><%= task.date %></td>
         <td><%= task.complete %></td>
         <td class ="text-right"><%= link_to 'Edit', edit_project_task_path(@project, task), class: "btn btn-info" %>
           <%= link_to '<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>'.html_safe,
-              project_task_path(@project, task), method: :delete, data:
+              project_task_path(@project, task), id: "destroy", method: :delete, data:
               { confirm: "Are you sure you want to delete this?" } %></td>
           <br>
         </tr>

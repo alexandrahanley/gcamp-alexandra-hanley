@@ -35,7 +35,7 @@ describe 'User can CRUD tasks' do
     click_on "New Task"
     fill_in 'task[description]', with: "Proofread"
     click_on "Create Task"
-    click_on "Show"
+    click_link("task-desc")
     expect(page).to have_content("Proofread")
 
   end
@@ -75,7 +75,7 @@ describe 'User can CRUD tasks' do
     click_on "New Task"
     fill_in 'task[description]', with: "Proofread"
     click_on "Create Task"
-    click_on("Delete")
+    click_link("destroy")
     expect(page).to have_content("Task was successfully destroyed.")
   end
 
