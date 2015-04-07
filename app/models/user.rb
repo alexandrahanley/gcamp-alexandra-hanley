@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  has_many :memberships
+  has_many :memberships, dependent: :destroy
   has_many :projects, through: :memberships
 
   validates :email, presence: true, uniqueness: true
