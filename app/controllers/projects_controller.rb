@@ -16,6 +16,7 @@ before_action :authenticate
   def update
     @project = Project.find(params[:id])
     if @project.update(project_params)
+      @membership = Membership.create(user_id: current_user.id, project_id: @project.id, role: 1)
       redirect_to @project, notice: 'Project was successfully updated.'
     else
       render :edit

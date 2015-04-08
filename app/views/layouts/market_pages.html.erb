@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>gCamp</title>
+  <%= favicon_link_tag 'favicon.ico' %>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+
+        <a class="navbar-brand" href="/projects">gCamp</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <% if current_user %>
+          <ul class="nav navbar-nav">
+
+            <li="dropdown">
+              <button class="dropdown-toggle"
+                            type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+                Projects
+                <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                <li><% current_user.projects.each do |project| %>
+                   <%= link_to project.name, project_path(project) %>
+                   <% end %>
+                </li>
+                  <% end %>
+              </ul>
+            </div>
+
+
+            <li><%= link_to 'Sign Out', signout_path %></li></ul>
+
+            <ul class="nav navbar-nav navbar-right">
+            <li><%= link_to "#{current_user.full_name}", user_path(current_user) %></li>
+            <li><%= link_to 'Sign Out', signout_path %></li>
+            <% else %>
+            <li><%= link_to 'Signup', signup_path %></li>
+            <li><%= link_to 'Signin', signin_path %></li>
+            <% end %>
+          </ul>
+
+        </div><!--/.navbar-collapse -->
+      </div>
+      </div>
+
+  </nav>
+
+
+  <div class= "container">
+
+      <%= yield %>
+
+      <hr>
+
+      <footer>
+        <div class="row">
+          <div class="text-center">
+            <%= link_to "Home", root_path %>
+            |
+            <%= link_to "About", about_path %>
+            |
+            <%= link_to "Terms", terms_path %>
+            |
+            <%= link_to "FAQ", faq_path %>
+          </div>
+        </div>
+      </footer>
+  </div>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="../../dist/js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+
+
+  </body>
+</html>
