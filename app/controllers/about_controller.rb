@@ -5,5 +5,6 @@ class AboutController < ApplicationController
     @tasks = Task.all
     @users = User.all
     @memberships = Membership.all
+    @comments = Comment.all
   end
 end
