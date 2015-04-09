@@ -18,26 +18,30 @@
         <a class="navbar-brand" href="/projects">gCamp</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
+
           <% if current_user %>
-          <ul class="nav navbar-nav">
+              <ul class="nav navbar-nav">
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Projects <span class="caret"></span></a>
+                <ul class="dropdown-menu" role="menu">
+                    <% Membership.all.each do |membership| %>
+                    <% if membership.user_id == current_user.id %>
+                  <li><%= link_to membership.project.name, project_path(membership.project) %></li>
+                    <% end %>
+                    <% end %>
+                  <li class="divider">
+                  </li>
+                    <li>
+                      <%= link_to 'New Project', new_project_path %>
+                    </li>
+                </ul>
+              </li>
+              <li>
+                <%= link_to 'Users', users_path %>
+              </li>
+            </ul>
 
-            <li="dropdown">
-              <button class="dropdown-toggle"
-                            type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-                Projects
-                <span class="caret"></span>
-              </button>
-              <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                <li><% current_user.projects.each do |project| %>
-                   <%= link_to project.name, project_path(project) %>
-                   <% end %>
-                </li>
-                  <% end %>
-              </ul>
-            </div>
 
-
-            <li><%= link_to 'Sign Out', signout_path %></li></ul>
 
             <ul class="nav navbar-nav navbar-right">
             <li><%= link_to "#{current_user.full_name}", user_path(current_user) %></li>
@@ -46,9 +50,11 @@
             <li><%= link_to 'Signup', signup_path %></li>
             <li><%= link_to 'Signin', signin_path %></li>
             <% end %>
+
+
           </ul>
 
-        </div><!--/.navbar-collapse -->
+        </div>
       </div>
       </div>
 

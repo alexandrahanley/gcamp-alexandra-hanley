@@ -1,4 +1,4 @@
-class TasksController < ApplicationController
+class TasksController < MarketPagesController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
   before_action :authenticate
 

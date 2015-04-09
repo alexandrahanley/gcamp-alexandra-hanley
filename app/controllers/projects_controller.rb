@@ -1,4 +1,4 @@
-class ProjectsController < ApplicationController
+class ProjectsController < MarketPagesController
 before_action :authenticate
 
   def index
