@@ -1,4 +1,6 @@
 class MembershipsController < MarketPagesController
+  before_action :set_project, :except => [:index, :new, :create]
+
 
   def index
     @project = Project.find(params[:project_id])
@@ -37,6 +39,13 @@ class MembershipsController < MarketPagesController
   end
 
  private
+
+   def set_project
+     @project = Project.find(params[:project_id])
+     unless @project && @project.users.include?(current_user)
+       redirect_to projects_path, notice: 'You do not have access to that project.'
+     end
+    end
 
   def membership_params
     params.require(:membership).permit(:role, :user_id, :project_id)
