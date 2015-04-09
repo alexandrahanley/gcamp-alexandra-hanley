@@ -1,6 +1,8 @@
 class TasksController < MarketPagesController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
   before_action :authenticate
+  before_action :set_project, :except => [:index, :new, :create]
+
 
   def index
     @project = Project.find(params[:project_id])
@@ -56,6 +58,13 @@ class TasksController < MarketPagesController
     def set_task
       @task = Task.find(params[:id])
     end
+
+    def set_project
+      @project = Project.find(params[:project_id])
+      unless @project && @project.users.include?(current_user)
+        redirect_to projects_path, notice: 'You do not have access to that project.'
+      end
+     end
 
     def task_params
       params.require(:task).permit(:description, :date, :complete, :project_id)
