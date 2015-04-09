@@ -1,4 +1,5 @@
 class UsersController < MarketPagesController
+  before_action :authenticate
 
   def index
     @users = User.all

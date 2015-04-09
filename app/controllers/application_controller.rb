@@ -9,7 +9,8 @@ class ApplicationController < ActionController::Base
 
   def authenticate
     if not current_user
-      redirect_to signin_path, notice: 'Not signed in!'
+      session[:previous_path] = request.fullpath
+      redirect_to signin_path
     end
   end
     helper_method :current_user
