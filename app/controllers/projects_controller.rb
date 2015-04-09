@@ -1,8 +1,9 @@
 class ProjectsController < MarketPagesController
 before_action :authenticate
+before_action :set_project, :except => [:index, :new, :create]
 
   def index
-    @projects = Project.all
+    @projects = current_user.projects
   end
 
   def new
@@ -43,6 +44,12 @@ before_action :authenticate
   end
 
   private
+
+  def set_project
+    unless @project && @project.users.include?(current_user)
+      redirect_to projects_path, notice: 'You do not have access to that project.'
+    end
+   end
 
   def project_params
     params.require(:project).permit(:name)
