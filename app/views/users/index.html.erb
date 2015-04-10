@@ -28,8 +28,15 @@
           <%= mail_to user.email %>
           <% end %>
         </td>
-        <td class ="text-right"><%= link_to 'Edit', edit_user_path(user) %></td>
+
+        <td class ="text-right">
+          <% if user == current_user %>
+          <%= link_to 'Edit', edit_user_path(user) %>
+          <% end %>
+        </td>
+        
         </tr>
+
         <% end %>
       </tbody>
     </table>
