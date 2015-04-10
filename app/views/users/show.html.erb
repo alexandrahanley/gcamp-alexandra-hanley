@@ -2,7 +2,7 @@
   <% if notice %>
   <div class= "alert alert-success"><%= notice %></div>
   <% end %>
-  
+
 
   <div class="pull-right">
     <%= link_to 'Edit', edit_user_path, class: "btn btn-info" %></div>
@@ -15,6 +15,8 @@
       <dd><%= @user.first_name %></dd><br>
       <dt>Last name</dt>
       <dd><%= @user.last_name %></dd><br>
-      <dt>Email</dt>
-      <dd><%= mail_to @user.email %></dd>
+      <% if @user == @current_user %>
+        <dt>Email</dt>
+        <dd><%= mail_to @user.email %></dd>
+      <% end %>
     </dl>
