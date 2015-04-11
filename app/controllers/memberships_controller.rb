@@ -34,7 +34,7 @@ class MembershipsController < MarketPagesController
     @membership = Membership.find(params[:id])
     @membership.project_id = @project.id
     @membership.destroy
-      redirect_to project_memberships_path(@project), notice:
+      redirect_to projects_path, notice:
       "#{@membership.user.full_name}#{" was successfully removed"}."
   end
 
