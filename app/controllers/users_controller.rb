@@ -1,5 +1,7 @@
 class UsersController < MarketPagesController
   before_action :authenticate
+  before_action :set_comembers, :only => [:index, :show]
+
 
   def index
     @users = User.all
@@ -7,6 +9,7 @@ class UsersController < MarketPagesController
 
   def show
     @user = User.find(params[:id])
+    @project = Project.find(params[:id])
   end
 
   def new
@@ -50,6 +53,10 @@ class UsersController < MarketPagesController
   end
 
   private
+
+  def set_comembers
+    @comembers = current_user.projects.map{|project| project.users}.flatten
+  end
 
   def user_params
     params.require(:user).permit(:first_name, :last_name, :email, :password)
