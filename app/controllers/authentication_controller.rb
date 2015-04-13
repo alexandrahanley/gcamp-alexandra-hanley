@@ -6,14 +6,14 @@ class AuthenticationController < ApplicationController
       session[:user_id] = user.id
       if session[:previous_path]
         redirect_to session[:previous_path]
-      elsif
+      else
         redirect_to projects_path
+      end
     else
-      @sign_in_error = "Username / password combination is invalid"
-      render :new
+      redirect_to signin_path, notice: "Username / password combination is invalid"
     end
+
   end
-end
 
   def destroy
     session.clear

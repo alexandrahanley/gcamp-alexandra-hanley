@@ -5,8 +5,12 @@ class ProjectsController < MarketPagesController
 
 
   def index
-    @projects = current_user.projects
+    if current_user.admin?
+      @projects = Project.all
+    else
+      @projects = current_user.projects
   end
+end
 
   def new
     @project = Project.new

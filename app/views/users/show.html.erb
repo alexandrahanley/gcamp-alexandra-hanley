@@ -5,7 +5,7 @@
 
 
   <div class="pull-right">
-    <% if current_user.owns_project?(@project) %>
+    <% if current_user.owns_project?(@project) || current_user.admin? %>
     <%= link_to 'Edit', edit_user_path, class: "btn btn-info" %>
     <% end %>
     </div>
@@ -19,7 +19,7 @@
       <dd><%= @user.first_name %></dd><br>
       <dt>Last name</dt>
       <dd><%= @user.last_name %></dd><br>
-      <% if @user == @current_user || @comembers.include?(@user) %>
+      <% if @user == @current_user || @comembers.include?(@user) || current_user.admin? %>
         <dt>Email</dt>
         <dd><%= mail_to @user.email %></dd>
       <% end %>

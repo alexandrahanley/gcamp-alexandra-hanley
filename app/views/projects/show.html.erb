@@ -4,7 +4,7 @@
   <% end %>
 
     <div class="pull-right">
-      <% if current_user.owns_project?(@project) %>
+      <% if current_user.owns_project?(@project) || user.admin? %>
         <%= link_to 'Edit', edit_project_path, class: "btn btn-info" %></td>
       <% end %>
     </div>
@@ -20,7 +20,7 @@
 <p><%= link_to "#{@project.tasks.count}#{" Tasks"}", project_tasks_path(@project) %></p>
 <p><%= link_to "#{@project.memberships.count}#{" Members"}", project_memberships_path(@project) %></p>
 
-<% if current_user.owns_project?(@project) %>
+<% if current_user.owns_project?(@project) || user.admin? %>
   <div class="well">
     <h4>Delete</h4>
     <p><%= "Deleting this project will also delete #{@project.memberships.count}

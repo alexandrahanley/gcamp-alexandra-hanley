@@ -8,8 +8,10 @@
     <h1> Sign in to gCamp </h1>
     <br>
 
-    <% if @sign_in_error %>
-    <div class= "alert alert-danger"><%= @sign_in_error %></div>
+    <% if notice %>
+      <div class="alert alert-danger">
+        <%= notice %>
+      </div>
     <% end %>
 
 

@@ -12,7 +12,7 @@
   <li class="active">Memberships</li>
 </ol>
 
-<% if current_user.owns_project?(@project) %>
+<% if current_user.owns_project?(@project) || user.admin? %>
 
 <%= form_for [@project, @membership] do |f| %>
   <% if flash.now[:alert] %>
@@ -36,7 +36,7 @@
 
 
 
-<% if current_user.owns_project?(@project) %>
+<% if current_user.owns_project?(@project) || user.admin? %>
 
 <div class= "form-inline">
   <% @project.memberships.each do |membership| %>
@@ -54,7 +54,7 @@
         <%= "You are the last owner." %>
         <% end %>
 
-    <% if current_user == membership.user %>
+    <% if current_user == membership.user || current_user.admin? %>
     <%= link_to '<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>'.html_safe,
         project_membership_path(@project, membership), method: :delete, data: { confirm: "Are you sure you want to delete this?" } %>
     <% end %>
