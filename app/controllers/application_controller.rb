@@ -16,4 +16,9 @@ class ApplicationController < ActionController::Base
     end
   end
     helper_method :current_user
+
+    def owns_project?(project)
+      project.memberships.find_by(role: Membership.roles[1], user_id: id)
+    end
+    
   end

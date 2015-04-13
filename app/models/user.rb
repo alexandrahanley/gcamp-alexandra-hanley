@@ -14,8 +14,9 @@ class User < ActiveRecord::Base
     "#{first_name} #{last_name}"
   end
 
+
   def owns_project?(project)
-    project.memberships.find_by(role: Membership.roles[1], user_id: id)
+    project.memberships.find_by(role: Membership.roles["owner"], user_id: id)
   end
 
 end

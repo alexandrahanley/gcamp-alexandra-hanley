@@ -1,11 +1,12 @@
 class MembershipsController < MarketPagesController
   before_action :set_project, :except => [:index, :new, :create]
-
+  before_action :set_owner, :only => [:update, :edit, :delete]
 
   def index
     @project = Project.find(params[:project_id])
     @memberships = @project.memberships.all
     @membership = Membership.new
+    @owner_of = current_user.owns_project?(@project)
   end
 
   def create
@@ -45,6 +46,12 @@ class MembershipsController < MarketPagesController
      unless @project && @project.users.include?(current_user)
        redirect_to projects_path, notice: 'You do not have access to that project.'
      end
+    end
+
+    def set_owner
+      unless current_user.owns_project?(@project)
+        redirect_to project_path(@project), notice: 'You do not have access.'
+      end
     end
 
   def membership_params
