@@ -25,10 +25,20 @@ class MembershipsController < MarketPagesController
     @project = Project.find(params[:project_id])
     @membership = Membership.find(params[:id])
     if @membership.update(membership_params)
-      redirect_to project_memberships_path(@project),
-      notice:"#{@membership.user.full_name}#{" was successfully updated"}."
+      @memberships = @project.memberships
+
+      if @membership.update(role: 1) && @memberships.where(role: 1).count == 1
+        redirect_to :back, notice: "Projects must have at least one owner!"
+      else
+        @memberships.where(role: 1).count == 1
+        @membership.update(membership_params)
+
+        redirect_to project_memberships_path(@project),
+        notice:"#{@membership.user.full_name}#{" was successfully updated"}."
+
     end
   end
+end
 
   def destroy
     @project = Project.find(params[:project_id])
