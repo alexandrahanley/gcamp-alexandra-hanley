@@ -61,7 +61,7 @@ class TasksController < MarketPagesController
 
     def set_project
       @project = Project.find(params[:project_id])
-      unless @project && @project.users.include?(current_user)
+      unless @project && @project.users.include?(current_user) || current_user.admin?
         redirect_to projects_path, notice: 'You do not have access to that project.'
       end
      end
