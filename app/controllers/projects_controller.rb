@@ -1,7 +1,7 @@
 class ProjectsController < MarketPagesController
   before_action :authenticate
   before_action :set_project, :except => [:index, :new, :create]
-  before_action :set_owner, :only => [:update, :edit, :destroy]
+  before_action :set_owner, :only => [:update, :edit]
 
 
   def index

@@ -12,7 +12,7 @@
   <li class="active">Memberships</li>
 </ol>
 
-<% if current_user.owns_project?(@project) || user.admin? %>
+<% if current_user.owns_project?(@project) || current_user.admin? %>
 
 <%= form_for [@project, @membership] do |f| %>
   <% if flash.now[:alert] %>
@@ -36,7 +36,7 @@
 
 
 
-<% if current_user.owns_project?(@project) || user.admin? %>
+<% if current_user.owns_project?(@project) || current_user.admin? %>
 
 <div class= "form-inline">
   <% @project.memberships.each do |membership| %>
