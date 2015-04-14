@@ -17,7 +17,6 @@ end
   end
 
   def edit
-    @project = Project.find(params[:id])
   end
 
   def update
@@ -59,6 +58,7 @@ end
    end
 
   def set_owner
+    @project = Project.find(params[:id])
     unless current_user.owns_project?(@project)
       redirect_to project_path(@project), notice: 'You do not have access.'
     end
