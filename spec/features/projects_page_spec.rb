@@ -3,7 +3,7 @@ require 'rails_helper'
 describe 'User can CRUD projects' do
 
   scenario 'User can create a project' do
-    @user = User.create(first_name: "V", last_name: "V", email: "v@v.com", password: "v", password_confirmation: "v")
+    @user = User.create(first_name: "V", last_name: "V", email: "v@v.com", password: "v", password_confirmation: "v", admin: :true)
     visit '/'
     click_on "Projects"
     fill_in 'email', with: "v@v.com"
