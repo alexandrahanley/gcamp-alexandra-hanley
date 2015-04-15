@@ -9,7 +9,6 @@ class UsersController < MarketPagesController
 
   def show
     @user = User.find(params[:id])
-    @project = Project.find(params[:id])
   end
 
   def new

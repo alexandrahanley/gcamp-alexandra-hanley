@@ -5,7 +5,7 @@
 
 
   <div class="pull-right">
-    <% if current_user.owns_project?(@project) || current_user.admin? %>
+    <% if current_user.admin? || current_user.owns_project?(@project) %>
     <%= link_to 'Edit', edit_user_path, class: "btn btn-info" %>
     <% end %>
     </div>

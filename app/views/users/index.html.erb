@@ -22,7 +22,7 @@
     <tbody>
       <% @users.each do |user| %>
       <tr>
-        <td><%= link_to user.full_name, user %></td>
+        <td><%= link_to user.full_name, user, id: "name" %></td>
         <td>
           <% if user == current_user || @comembers.include?(user) || current_user.admin? %>
           <%= mail_to user.email %>
