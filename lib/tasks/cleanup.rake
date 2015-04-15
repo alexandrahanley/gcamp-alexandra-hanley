@@ -1,4 +1,4 @@
-namespace :clean do
+task clean: :environment do
 
    task delete_memberships: :environment do
      Membership.all.each do |member|
