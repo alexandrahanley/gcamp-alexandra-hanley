@@ -1,4 +1,4 @@
-gCamp Project
+taskr Project
 
 == README
 
